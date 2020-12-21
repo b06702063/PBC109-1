@@ -34,3 +34,4 @@ for i in useful_inf:
 product_price = zip(product, price)
 print(dict(product_price))
 
+'''costco網站'''
