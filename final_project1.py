@@ -35,3 +35,11 @@ product_price = zip(product, price)
 print(dict(product_price))
 
 '''costco網站'''
+cos_url = 'https://www.costco.com.tw/search?text='  # 抓網址
+cos_url += enter_name
+
+cos_r = requests.get(cos_url)  # 抓下原始碼
+cos_soup = BeautifulSoup(cos_r.text, 'html.parser')
+
+
+cos_product_tags = soup.find_all('script', attrs=attr)
