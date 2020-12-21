@@ -17,6 +17,10 @@ import tkinter as tk
 
 """第一頁"""
 
+
+def assign(num):
+    x = num
+
 class generator(tk.Frame):
 
     def __init__(self):
@@ -24,20 +28,34 @@ class generator(tk.Frame):
         self.grid()
         self.createWidgets()
 
+
     def createWidgets(self):
-        self.mode = tk.Label(self, text="MODE")
+        self.imagetit = ImageTk.PhotoImage(file="tit.png")
+        self.mode = tk.Label(self, image=self.imagetit)
         self.imageP = ImageTk.PhotoImage(file="P.png")
-        self.price_oriented = tk.Button(self, image=self.imageP,  command=self.strconvert)
-        self.store_oriented = tk.Button(self, text = "同一家店", )
-        self.mixed_version = tk.Button(self, text = "中庸", )
+        self.price_oriented = tk.Button(self, image=self.imageP)
+        self.imageS = ImageTk.PhotoImage(file="S.png")
+        self.store_oriented = tk.Button(self, image=self.imageS)
+        self.imageM = ImageTk.PhotoImage(file="M.png")
+        self.mixed_version = tk.Button(self, image=self.imageM)
         self.price_oriented.grid(row=1, column = 0)
         self.store_oriented.grid(row=1, column = 1)
         self.mixed_version.grid(row=1, column = 2)
         self.mode.grid(row=0, column = 1)
 
-    def strconvert(self):
-        self.price_oriented.configure(text = "最高價")
-
 gen =generator()
 gen.master.title("The cost generator")
 gen.mainloop()
+
+class information(tk.Frame):
+
+    def __init__(self):
+        tk.Frame.__init__(self)
+        self.grid()
+        self.input_information()
+
+    def input_information(self):
+        self.instruction = tk.Label(self, text="Your ingredients")
+        self.Block = tk.Text(self, height = 40, width = 40)
+        self.instruction.grid(row = 0, column = 0)
+        self.Block.grid(row = 1, column= 0)
