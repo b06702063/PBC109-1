@@ -11,8 +11,8 @@ r = requests.get(url)  # 把網頁的原始碼抓下來
 soup = BeautifulSoup(r.text, 'html.parser')
 
 
-attr = {'type':"text/javascript"}
-product_tags = soup.find_all('script', attrs = attr)
+attr = {'type': "text/javascript"}
+product_tags = soup.find_all('script', attrs=attr)
 
 useful_inf = str(product_tags[12]).split(',')
 
@@ -21,15 +21,16 @@ price = []
 
 name = ()
 for i in useful_inf:
-	if 'EecProductName' in i:
-		name = i.strip('\\"')
-		name = name.strip('EecProductName\\":\\"')
-		product.append(name)
+    if 'EecProductName' in i:
+        name = i.strip('\\"')
+        name = name.strip('EecProductName\\":\\"')
+        product.append(name)
 for i in useful_inf:
-	if 'RealPrice' in i:
-		name = i.strip('\\"')
-		name = name.strip('RealPrice\\":\\"')
-		price.append(int(name))
+    if 'RealPrice' in i:
+        name = i.strip('\\"')
+        name = name.strip('RealPrice\\":\\"')
+        price.append(int(name))
 
 product_price = zip(product, price)
 print(dict(product_price))
+
