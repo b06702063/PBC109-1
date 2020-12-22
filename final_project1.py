@@ -46,13 +46,20 @@ cos_soup = BeautifulSoup(cos_r.text, 'html.parser')
 
 cos_product = cos_soup.find_all('script', attrs=attr)
 
-cos_useful = str(cos_product[3]).split(';')
+cos_useful = str(cos_product[3]).split('[')  # 資料位於第三塊
 
-cos_product_list = []
-cos_price_list = []
+cos_product_list = []  # 用於記錄產品名
+cos_price_list = []  # 用於紀錄價格
+
+'''商品資訊存在gtm_products的list中'''
 
 for i in cos_useful:
-    if 'gtm_products' in i:
-        i.strip()
-        print(i)
-'''商品資訊存在gtm_products的list中'''
+    if '"name"' in i:
+        right = i.find(']')  # 選出包括右括號的字串
+        i = i[:right]  # 切割字串
+        cos_gtm = i.split('}')  # 網頁上產品串
+
+cos_gtm.pop()  # list最後有空字串
+
+for i in cos_gtm:
+    cos_name = i.find('"name":"')
