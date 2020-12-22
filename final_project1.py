@@ -45,6 +45,14 @@ cos_r = requests.get(cos_url)  # 抓下原始碼
 cos_soup = BeautifulSoup(cos_r.text, 'html.parser')
 
 cos_product = cos_soup.find_all('script', attrs=attr)
-print(cos_product)
 
+cos_useful = str(cos_product[3]).split(';')
+
+cos_product_list = []
+cos_price_list = []
+
+for i in cos_useful:
+    if 'gtm_products' in i:
+        i.strip()
+        print(i)
 '''商品資訊存在gtm_products的list中'''
