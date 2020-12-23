@@ -35,6 +35,8 @@ for i in useful_inf:
 
 product_price = zip(product, price)
 print(dict(product_price))
+'''測試換頁'''
+new_tag = soup.find_all('div', class_='pagenation')
 
 
 '''costco'''
