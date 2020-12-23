@@ -1,7 +1,10 @@
 # _*_coding:utf8_*_
-
+import selenium
+from selenium import webdriver
 import requests
 from bs4 import BeautifulSoup
+import time
+from selenium.webdriver.chrome.options import Options
 
 enter_name = input('請輸入食材:')  # 食材種類
 url = 'https://online.carrefour.com.tw/tw/search?key='  # 抓網址
@@ -34,7 +37,7 @@ for i in useful_inf:
         price.append(int(name))
 
 product_price = zip(product, price)
-print(dict(product_price))
+# print(dict(product_price))
 '''測試換頁'''
 new_tag = soup.find_all('div', class_='pagenation')
 
@@ -61,7 +64,21 @@ for i in cos_useful:
         i = i[:right]  # 切割字串
         cos_gtm = i.split('}')  # 網頁上產品串
 
-cos_gtm.pop()  # list最後有空字串
+# cos_gtm.pop()  # list最後有空字串
 
 for i in cos_gtm:
     cos_name = i.find('"name":"')
+'''測試網站模擬器'''
+opt = Options()
+opt.add_argument('--disable-notifications')
+
+
+chrome = webdriver.Chrome(
+    executable_path=r"D:\\coding\\chromedriver.exe", chrome_options=opt)
+'''
+driver = webdriver.Chrome(
+    executable_path="D:\\coding\\chromedriver.exe")
+'''
+chrome.get(url)
+
+time.sleep(5)
