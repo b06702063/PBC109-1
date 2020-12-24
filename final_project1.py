@@ -37,10 +37,7 @@ for i in useful_inf:
         price.append(int(name))
 
 product_price = zip(product, price)
-# print(dict(product_price))
-'''測試換頁'''
-new_tag = soup.find_all('div', class_='pagenation')
-
+print(dict(product_price))
 
 '''costco'''
 
@@ -56,7 +53,7 @@ cos_useful = str(cos_product[3]).split('[')  # 資料位於第三塊
 cos_product_list = []  # 用於記錄產品名
 cos_price_list = []  # 用於紀錄價格
 
-'''商品資訊存在gtm_products的list中'''
+# 商品資訊存在gtm_products的list中
 
 for i in cos_useful:
     if '"name"' in i:
@@ -64,21 +61,31 @@ for i in cos_useful:
         i = i[:right]  # 切割字串
         cos_gtm = i.split('}')  # 網頁上產品串
 
-# cos_gtm.pop()  # list最後有空字串
+cos_gtm.pop()  # list最後有空字串
 
 for i in cos_gtm:
-    cos_name = i.find('"name":"')
+    for j in range(len(i)):
+        if i[j-9: j] == '{"name":"':  # 找出商品名稱
+            name_comma = i.find('"', j)
+            cos_product_list.append(i[j:name_comma])
+        if i[j-9: j] == '"price":"':  # 找出商品價格
+            price_comma = i.find('"', j-1)
+            cos_price_list.append(i[j:price_comma])
+
+cos_product_price = zip(cos_product_list, cos_price_list)
+
+print(dict(cos_product_price))
+
+
 '''測試網站模擬器'''
+
 opt = Options()
 opt.add_argument('--disable-notifications')
 
 
 chrome = webdriver.Chrome(
     executable_path=r"D:\\coding\\chromedriver.exe", chrome_options=opt)
-'''
-driver = webdriver.Chrome(
-    executable_path="D:\\coding\\chromedriver.exe")
-'''
+
 chrome.get(url)
 
 time.sleep(5)
