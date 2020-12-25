@@ -4,7 +4,8 @@ from selenium import webdriver
 import requests
 from bs4 import BeautifulSoup
 import time
-from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support.ui import Select
+import pandas as pd
 
 enter_name = input('請輸入食材:')  # 食材種類
 url = 'https://online.carrefour.com.tw/tw/search?key='  # 抓網址
@@ -37,7 +38,7 @@ for i in useful_inf:
         price.append(int(name))
 
 product_price = zip(product, price)
-print(dict(product_price))
+# print(dict(product_price))
 
 '''costco'''
 
@@ -68,24 +69,10 @@ for i in cos_gtm:
         if i[j-9: j] == '{"name":"':  # 找出商品名稱
             name_comma = i.find('"', j)
             cos_product_list.append(i[j:name_comma])
-        if i[j-9: j] == '"price":"':  # 找出商品價格
-            price_comma = i.find('"', j-1)
+        if i[j-9: j] == '"price"':  # 找出商品價格
+            price_comma = i.find(':', j)
             cos_price_list.append(i[j:price_comma])
 
 cos_product_price = zip(cos_product_list, cos_price_list)
 
-print(dict(cos_product_price))
-
-
-'''測試網站模擬器'''
-
-opt = Options()
-opt.add_argument('--disable-notifications')
-
-
-chrome = webdriver.Chrome(
-    executable_path=r"D:\\coding\\chromedriver.exe", chrome_options=opt)
-
-chrome.get(url)
-
-time.sleep(5)
+# print(dict(cos_product_price))
