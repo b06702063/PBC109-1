@@ -154,19 +154,47 @@ while True:
 
     print('------')
     print('大潤發的最低價格的推薦是：')
-    print(rtmart_sort_product_price[0])
-    print(rtmart_sort_product_price[1])
-    print(rtmart_sort_product_price[2])  # 印出前三個便宜的
+    if len(rtmart_sort_product_price) == 0:
+        print('此項商品不存在')
+    if len(rtmart_sort_product_price) == 1:
+        print(rtmart_sort_product_price[0])
+    elif len(rtmart_sort_product_price) == 2:
+        print(rtmart_sort_product_price[0])
+        print(rtmart_sort_product_price[1])
+    elif len(rtmart_sort_product_price) > 2:
+        print(rtmart_sort_product_price[0])
+        print(rtmart_sort_product_price[1])
+        print(rtmart_sort_product_price[2])
+
+
     print('------')
     print('costco的最低價格的推薦是：')
-    print(costco_sort_product_price[0])
-    print(costco_sort_product_price[1])
-    print(costco_sort_product_price[2])
+    if len(costco_sort_product_price) == 0:
+        print('此項商品不存在')
+    if len(costco_sort_product_price) == 1:
+        print(costco_sort_product_price[0])
+    elif len(costco_sort_product_price) == 2:
+        print(costco_sort_product_price[0])
+        print(costco_sort_product_price[1])
+    elif len(costco_sort_product_price) > 2:
+        print(costco_sort_product_price[0])
+        print(costco_sort_product_price[1])
+        print(costco_sort_product_price[2])
+
+
     print('------')
     print('家樂福的最低價格的推薦是：')
-    print(carefour_sort_product_price[0])
-    print(carefour_sort_product_price[1])
-    print(carefour_sort_product_price[2])
+    if len(carefour_sort_product_price) == 0:
+        print('此項商品不存在')
+    if len(carefour_sort_product_price) == 1:
+        print(carefour_sort_product_price[0])
+    elif len(carefour_sort_product_price) == 2:
+        print(carefour_sort_product_price[0])
+        print(carefour_sort_product_price[1])
+    elif len(carefour_sort_product_price) > 2:
+        print(carefour_sort_product_price[0])
+        print(carefour_sort_product_price[1])
+        print(carefour_sort_product_price[2])
 
     '''重新輸入'''
     again = str(input('是否再次輸入? 是/否: '))
