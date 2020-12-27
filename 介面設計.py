@@ -6,20 +6,17 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 import time
 import tkinter as tk
+from PIL import ImageTk,Image
 
 root = tk.Tk()  # 建立主視窗物件
-root.geometry("640x480")  # 設定主視窗預設尺寸為640x480
+root.geometry("1280x600")  # 設定主視窗預設尺寸為640x480
 root.title('價格比較')  # 設定主視窗標題
+root.configure(bg='azure2')
 
-input_frm = tk.Frame(root, width=640, height=50)  # 提示文字的部分
+input_frm = tk.Frame(root, width=400, height=50,bg='azure2')  # 提示文字的部分
 input_frm.pack()
-lb = tk.Label(input_frm, text='請在此輸入商品名稱：',fg='black')
+lb = tk.Label(input_frm, text='請在此輸入商品名稱：',fg='black',bg='azure2',font=('Arial', 20))
 lb.place(rely=0.3, relx=0.5, anchor='center')
-
-textExample=tk.Text(root, height=10)
-textExample.pack()
-btnRead=tk.Button(root, height=1, width=10, text="Search", command=getTextInput)  # 按鈕
-btnRead.pack()
 
 def getTextInput():  # 輸入文字
     enter_name = textExample.get(1.0, tk.END+"-1c")
@@ -160,14 +157,41 @@ def getTextInput():  # 輸入文字
 
     product_price = dict(zip(product, price))
     carefour_sort_product_price = sorted(product_price.items(), key=lambda x: x[1], reverse=False)
-    l = tk.Label(root, text=str(rtmart_sort_product_price[0]), bg='gray', font=('Arial', 12), width=30, height=2)
-    l.pack()
+    rtmart = tk.Label(root, text='大潤發的價格是：\n'+'\n'+str(rtmart_sort_product_price[0][0])+'： '+str(rtmart_sort_product_price[0][1])+'元'+'\n'+str(rtmart_sort_product_price[1][0])+'： '+str(rtmart_sort_product_price[1][1])+'元'+'\n'+str(rtmart_sort_product_price[2][0])+'： '+str(rtmart_sort_product_price[2][1])+'元', bg='khaki2', font=('Arial', 12))
+    rtmart.place(x=20, y=320, width=390, height=200)
+    costco = tk.Label(root, text='costco的價格是：\n'+'\n'+str(costco_sort_product_price[0][0])+'： '+str(costco_sort_product_price[0][1])+'元'+'\n'+str(costco_sort_product_price[1][0])+'： '+str(costco_sort_product_price[1][1])+'元'+'\n'+str(costco_sort_product_price[2][0])+'： '+str(costco_sort_product_price[2][1])+'元', bg='khaki2', font=('Arial', 12))
+    costco.place(x=435, y=320, width=410, height=200)
+    carrefour = tk.Label(root, text='家樂福的價格是：\n'+'\n'+str(carefour_sort_product_price[0][0])+'： '+str(carefour_sort_product_price[0][1])+'元'+'\n'+str(carefour_sort_product_price[1][0])+'： '+str(carefour_sort_product_price[1][1])+'元'+'\n'+str(carefour_sort_product_price[2][0])+'： '+str(rtmart_sort_product_price[2][1])+'元', bg='khaki2', font=('Arial', 12))
+    carrefour.place(x=870, y=320, width=390, height=200)
     
 
 
 
+textExample=tk.Text(root, height=5)
+textExample.pack()
+
+btnRead=tk.Button(root, height=1, width=10, text="Search", command=getTextInput)  # 按鈕
+btnRead.pack()
+
+
+
+rtmart_img = Image.open("/Users/hnsung/Desktop/商管期末/rtmart.png")
+rtmart_img = rtmart_img.resize((200, 100), Image.ANTIALIAS)
+rtmart_img = ImageTk.PhotoImage(rtmart_img)
+imLabel = tk.Label(root,image=rtmart_img)
+imLabel.place(x=120, y=200)
+
+costco_img = Image.open("/Users/hnsung/Desktop/商管期末/costco.png")
+costco_img = costco_img.resize((200, 100), Image.ANTIALIAS)
+costco_img = ImageTk.PhotoImage(costco_img)
+imLabel = tk.Label(root,image=costco_img)
+imLabel.place(x=540, y=200)
+
+carrefour_img = Image.open("/Users/hnsung/Desktop/商管期末/carrefour.png")
+carrefour_img = carrefour_img.resize((200, 100), Image.ANTIALIAS)
+carrefour_img = ImageTk.PhotoImage(carrefour_img)
+imLabel = tk.Label(root,image=carrefour_img)
+imLabel.place(x=960, y=200)
+
 root.mainloop()
-
-
-
 
