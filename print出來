@@ -1,0 +1,38 @@
+if len(rtmart_sort_product_price) >= 3:
+        rtmart = tk.Label(root, text='大潤發的價格是：\n'+'\n'+str(rtmart_sort_product_price[0][0])+'： '+str(rtmart_sort_product_price[0][1])+'元'+'\n'+str(rtmart_sort_product_price[1][0])+'： '+str(rtmart_sort_product_price[1][1])+'元'+'\n'+str(rtmart_sort_product_price[2][0])+'： '+str(rtmart_sort_product_price[2][1])+'元', bg='LightGoldenrod1', font=('Arial', 12))
+        rtmart.place(x=20, y=320, width=390, height=200)
+    elif len(rtmart_sort_product_price) == 2:
+        rtmart = tk.Label(root, text='大潤發的價格是：\n'+'\n'+str(rtmart_sort_product_price[0][0])+'： '+str(rtmart_sort_product_price[0][1])+'元'+'\n'+str(rtmart_sort_product_price[1][0])+'： '+str(rtmart_sort_product_price[1][1])+'元', bg='LightGoldenrod1', font=('Arial', 12))
+        rtmart.place(x=20, y=320, width=390, height=200)
+    elif len(rtmart_sort_product_price) == 1:
+        rtmart = tk.Label(root, text='大潤發的價格是：\n'+'\n'+str(rtmart_sort_product_price[0][0])+'： '+str(rtmart_sort_product_price[0][1])+'元', bg='LightGoldenrod1', font=('Arial', 12))
+        rtmart.place(x=20, y=320, width=390, height=200)
+    else:
+        rtmart = tk.Label(root, text='大潤發的價格是：\n'+'\n'+'此賣場無相關商品', bg='LightGoldenrod1', font=('Arial', 12))
+        rtmart.place(x=20, y=320, width=390, height=200)
+    
+    if len(costco_sort_product_price) >= 3:
+        costco = tk.Label(root, text='costco的價格是：\n'+'\n'+str(costco_sort_product_price[0][0])+'： '+str(costco_sort_product_price[0][1])+'元'+'\n'+str(costco_sort_product_price[1][0])+'： '+str(costco_sort_product_price[1][1])+'元'+'\n'+str(costco_sort_product_price[2][0])+'： '+str(costco_sort_product_price[2][1])+'元', bg='LightGoldenrod1', font=('Arial', 12))
+        costco.place(x=435, y=320, width=410, height=200)
+    elif len(costco_sort_product_price) == 2:
+        costco = tk.Label(root, text='costco的價格是：\n'+'\n'+str(costco_sort_product_price[0][0])+'： '+str(costco_sort_product_price[0][1])+'元'+'\n'+str(costco_sort_product_price[1][0])+'： '+str(costco_sort_product_price[1][1])+'元', bg='LightGoldenrod1', font=('Arial', 12))
+        costco.place(x=435, y=320, width=410, height=200)
+    elif len(costco_sort_product_price) == 1:
+        costco = tk.Label(root, text='costco的價格是：\n'+'\n'+str(costco_sort_product_price[0][0])+'： '+str(costco_sort_product_price[0][1])+'元', bg='LightGoldenrod1', font=('Arial', 12))
+        costco.place(x=435, y=320, width=410, height=200)
+    else:
+        costco = tk.Label(root, text='costco的價格是：\n'+'\n'+'此賣場無相關商品', bg='LightGoldenrod1', font=('Arial', 12))
+        costco.place(x=435, y=320, width=410, height=200)
+    
+    if len(carefour_sort_product_price) >= 3:
+        carrefour = tk.Label(root, text='家樂福的價格是：\n'+'\n'+str(carefour_sort_product_price[0][0])+'： '+str(carefour_sort_product_price[0][1])+'元'+'\n'+str(carefour_sort_product_price[1][0])+'： '+str(carefour_sort_product_price[1][1])+'元'+'\n'+str(carefour_sort_product_price[2][0])+'： '+str(carefour_sort_product_price[2][1])+'元', bg='LightGoldenrod1', font=('Arial', 12))
+        carrefour.place(x=870, y=320, width=390, height=200)
+    elif len(carefour_sort_product_price) == 2:
+        carrefour = tk.Label(root, text='家樂福的價格是：\n'+'\n'+str(carefour_sort_product_price[0][0])+'： '+str(carefour_sort_product_price[0][1])+'元'+'\n'+str(carefour_sort_product_price[1][0])+'： '+str(carefour_sort_product_price[1][1])+'元', bg='LightGoldenrod1', font=('Arial', 12))
+        carrefour.place(x=870, y=320, width=390, height=200)
+    elif len(carefour_sort_product_price) == 1:
+        carrefour = tk.Label(root, text='家樂福的價格是：\n'+'\n'+str(carefour_sort_product_price[0][0])+'： '+str(carefour_sort_product_price[0][1])+'元', bg='LightGoldenrod1', font=('Arial', 12))
+        carrefour.place(x=870, y=320, width=390, height=200)
+    else:
+        carrefour = tk.Label(root, text='家樂福的價格是：\n'+'\n'+'此賣場無相關商品', bg='LightGoldenrod1', font=('Arial', 12))
+        carrefour.place(x=870, y=320, width=390, height=200)
